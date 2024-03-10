@@ -149,7 +149,8 @@ def main():
 if __name__ == "__main__":
     # Increase the stack size to prevent stack overflow
     threading.stack_size(9000000)
-    main_thread = threading.Thread(
+    testing_thread = threading.Thread(
         target=main,
     )
-    main_thread.start()
+    testing_thread.daemon = True
+    testing_thread.start()

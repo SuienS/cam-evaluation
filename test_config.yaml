@@ -8,7 +8,7 @@ class_count: 5
 image_size: 224
 
 # Number of samples to be used for evaluation. If set to -1, all samples will be used
-sample_count: 3
+sample_count: 2000
 
 # Path to the directory containing the images
 data_path: ./example_data/MSCOCO_Sample
