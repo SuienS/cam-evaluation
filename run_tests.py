@@ -8,6 +8,8 @@ import argparse
 import csv
 import time
 import yaml
+import time
+
 
 
 
@@ -24,6 +26,8 @@ model = None
 model_with_softmax = None
 
 def main():
+    START_TIME = time.time()
+
     logging.basicConfig(format='[%(levelname)s]: %(message)s', level=logging.INFO)
     logging.info("Initiating tests...")
 
@@ -143,6 +147,8 @@ def main():
     
     logging.info("GCAM results saved to: " + gcam_results_csv_name)
 
+    END_TIME = time.time()
+    logging.info("Total time taken: " + str(END_TIME - START_TIME))
     logging.info("Tests completed!")
 
 
@@ -156,6 +162,5 @@ if __name__ == "__main__":
     testing_thread.start()
 
     # Keep the main thread alive
-    import time
     while True:
         time.sleep(1)
