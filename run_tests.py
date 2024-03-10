@@ -4,7 +4,7 @@ from torch import nn
 import matplotlib.pyplot as plt
 import glob
 import logging
-import argparse
+import os
 import csv
 import time
 import yaml
@@ -163,4 +163,6 @@ if __name__ == "__main__":
 
     # Keep the main thread alive
     while True:
-        time.sleep(1)
+        testing_thread.join(5)
+        if not testing_thread.is_alive():
+            break
