@@ -72,7 +72,6 @@ def main():
     img_h = IMAGE_SIZE
     img_w = IMAGE_SIZE
     img_pp_size = (img_w, img_h)
-    sample_count = 20000
     target_classes = list(range(class_count))
 
     DATA_PATH = "./example_data/MSCOCO_Sample"
@@ -81,7 +80,8 @@ def main():
     logging.info("Data path: " + DATA_PATH)
     logging.info("Total Data Count: " + str(len(valid_img_paths)))
 
-    if (sample_count := SAMPLE_COUNT) == -1:
+    sample_count = SAMPLE_COUNT
+    if sample_count == -1:
         logging.info("Sample count set to -1. Using all data.")
     elif sample_count > len(valid_img_paths):
         logging.warning("Sample count exceeds data count. Using all data.")
@@ -154,3 +154,8 @@ if __name__ == "__main__":
     )
     testing_thread.daemon = True
     testing_thread.start()
+
+    # Keep the main thread alive
+    import time
+    while True:
+        time.sleep(1)
